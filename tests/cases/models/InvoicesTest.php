@@ -1,6 +1,6 @@
 <?php
 
-namespace li3_freshbooks\test\cases\models;
+namespace li3_freshbooks\tests\cases\models;
 
 use \li3_freshbooks\models\Invoices;
 
