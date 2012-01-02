@@ -156,8 +156,7 @@ class Freshbooks extends \lithium\data\source\Http {
 		$data = str_replace("\n", '', $this->_render("invoice.list"));
 		$result = $this->connection->post('xml-in', $data, array('type' => 'xml'));
 		$result = $data = json_decode(json_encode(simplexml_load_string($result)), true);
-		var_dump($result);
-		die("~~");
+
 		return $this->item($query->model(), $result[$source], array('class' => 'set'));
 	}
 
