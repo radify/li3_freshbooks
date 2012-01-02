@@ -116,7 +116,20 @@ class Freshbooks extends \lithium\data\source\Http {
 		unset($config['type']);
 		$this->connection = $this->_instance('service', $config);
 	}
-	
+
+	public static function enabled($feature = null) {
+		if (!$feature) {
+			return true;
+		}
+		$features = array(
+			'arrays' => true,
+			'transactions' => false,
+			'booleans' => true,
+			'relationships' => false
+		);
+		return isset($features[$feature]) ? $features[$feature] : null;
+	}
+
 	public function cast($entity, array $data, array $options = array()) {
 		foreach($data as $key => $val) {
 			if (!is_array($val)) {
