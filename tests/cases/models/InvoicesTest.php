@@ -38,7 +38,32 @@ class InvoicesTest extends \lithium\test\Unit {
 	}
 
 	public function testFind() {
-	    $result = Invoices::find('first')->id;
+		/*
+		$data = array(
+'HTTP/1.1 200 OK',
+'Header: Value',
+'Connection: close',
+'Content-Type: application/xml;charset=UTF-8',
+'',
+'<?xml version="1.0"?>
+<response xmlns="http://www.freshbooks.com/api/" status="ok">
+  <invoice>
+    <invoice_id>344</invoice_id>
+    <client_id>3</client_id>
+    <contacts>
+        <contact>
+            <contact_id>0</contact_id>
+        </contact>
+    </contacts>
+	...
+	...
+'
+);
+		*/
+		$data = '';
+		$this->socket->returnRead = implode("\r\n", $data);
+
+		$result = Invoices::find('first')->id;
 	    $this->assertTrue($id, 'Query did not pull data.');
 	}
 }
