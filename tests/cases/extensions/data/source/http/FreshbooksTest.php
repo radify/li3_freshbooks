@@ -4,27 +4,29 @@ namespace li3_freshbooks\tests\cases\extensions\data\source\http;
 
 use lithium\data\Connections;
 use li3_freshbooks\extensions\adapter\data\source\http\Freshbooks;
+use li3_freshbooks\tests\mocks\extensions\data\source\http\MockFreshbooksSocket;
 
 class FreshbooksTest extends \lithium\test\Unit {
 
 	public $source;
 
-	protected $_backup = array();
+	public $socket;
 
-	protected $_testConfig = array(
-		'login' => 'test',
-		'password' => '123',
-		'socket' => 'li3_freshbooks\tests\mocks\data\source\http\MockFreshbooksSocket'
-	);
+	protected $_backup = array();
 
 	public function setUp() {
 		$this->_backup['connections'] = Connections::config();
-
 		Connections::reset();
-		$this->source = new Freshbooks(array('socket' => false));
+
+		$this->socket = new MockFreshbooksSocket();
+		$this->source = new Freshbooks(array(
+			'login' => 'test',
+			'password' => '123',
+			'socket' => $this->socket
+		));
 
 		Connections::config(array(
-			'mocked' => array(
+			'freshbooks' => array(
 				'object' => &$this->source,
 				'adapter' => 'Freshbooks'
 			)
