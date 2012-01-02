@@ -145,8 +145,8 @@ class Freshbooks extends \lithium\data\source\Http {
 	/**
 	 * Data source READ operation.
 	 *
-	 * @param string $query 
-	 * @param array $options 
+	 * @param string $query
+	 * @param array $options
 	 * @return mixed
 	 */
 	public function read($query, array $options = array()) {
