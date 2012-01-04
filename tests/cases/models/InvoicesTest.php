@@ -1,13 +1,16 @@
 <?php
 
-namespace li3_freshbooks\test\cases\models;
+namespace li3_freshbooks\tests\cases\models;
 
+use lithium\data\Connections;
+use li3_freshbooks\extensions\adapter\data\source\http\Freshbooks;
+use li3_freshbooks\tests\mocks\extensions\data\source\http\MockFreshbooksSocket;
 use li3_freshbooks\models\Invoices;
 
 class InvoicesTest extends \lithium\test\Unit {
 
 	public $source;
-	
+
 	public $socket;
 
 	protected $_backup = array();
@@ -37,7 +40,6 @@ class InvoicesTest extends \lithium\test\Unit {
 	}
 
 	public function testFind() {
-
 		$response = array(
 			'HTTP/1.1 200 OK',
 			'Header: Value',

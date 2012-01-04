@@ -5,7 +5,7 @@ namespace li3_freshbooks\tests\mocks\extensions\data\source\http;
 class MockFreshbooksSocket extends \lithium\net\Socket {
 
 	public $returnRead;
-	
+
 	protected $read;
 
 	protected $_data = null;

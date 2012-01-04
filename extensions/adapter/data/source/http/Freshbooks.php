@@ -116,7 +116,20 @@ class Freshbooks extends \lithium\data\source\Http {
 		unset($config['type']);
 		$this->connection = $this->_instance('service', $config);
 	}
-	
+
+	public static function enabled($feature = null) {
+		if (!$feature) {
+			return true;
+		}
+		$features = array(
+			'arrays' => true,
+			'transactions' => false,
+			'booleans' => true,
+			'relationships' => false
+		);
+		return isset($features[$feature]) ? $features[$feature] : null;
+	}
+
 	public function cast($entity, array $data, array $options = array()) {
 		foreach($data as $key => $val) {
 			if (!is_array($val)) {
@@ -132,8 +145,8 @@ class Freshbooks extends \lithium\data\source\Http {
 	/**
 	 * Data source READ operation.
 	 *
-	 * @param string $query 
-	 * @param array $options 
+	 * @param string $query
+	 * @param array $options
 	 * @return mixed
 	 */
 	public function read($query, array $options = array()) {
@@ -143,8 +156,7 @@ class Freshbooks extends \lithium\data\source\Http {
 		$data = str_replace("\n", '', $this->_render("invoice.list"));
 		$result = $this->connection->post('xml-in', $data, array('type' => 'xml'));
 		$result = $data = json_decode(json_encode(simplexml_load_string($result)), true);
-		var_dump($result);
-		die("~~");
+
 		return $this->item($query->model(), $result[$source], array('class' => 'set'));
 	}
 
