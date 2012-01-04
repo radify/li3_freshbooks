@@ -3,7 +3,6 @@
 namespace li3_freshbooks\tests\cases\extensions\data\source\http;
 
 use lithium\data\Connections;
-
 use lithium\data\model\Query;
 use li3_freshbooks\models\Invoices;
 use li3_freshbooks\extensions\adapter\data\source\http\Freshbooks;
