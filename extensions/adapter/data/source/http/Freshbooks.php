@@ -66,7 +66,7 @@ class Freshbooks extends \lithium\data\source\Http {
 				'recurring_id' 		 	=> array('type' => 'integer'),
 				'status' 			=> array('type' => 'string'),
 				'amount'			=> array('type' => 'integer'),
-				'amount_outstanding'	=> array('type' => 'integer'),
+				'amount_outstanding'		=> array('type' => 'integer'),
 				'paid' 				=> array('type' => 'integer'),
 				'date'				=> array('type' => 'string'),
 				'name'				=> array('type' => 'string'),
