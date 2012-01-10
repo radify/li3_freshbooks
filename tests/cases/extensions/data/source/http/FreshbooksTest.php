@@ -94,7 +94,7 @@ class FreshbooksTest extends \lithium\test\Unit {
 		$results = $this->source->read($query);
 		$expected = '';
 		$result = $results->first();
-		$this->assertTrue($result);
+		$this->assertEqual($expected, $result);
 	}
 }
 
